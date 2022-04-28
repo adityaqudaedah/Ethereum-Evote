@@ -10,7 +10,7 @@ const Welcome = () => {
       <Flex flexDirection="column" justifyContent="space-around" w="50%">
         <Heading fontSize="4xl" fontWeight="extrabold" as="h3">
           Welcome To E-Voting <br />
-          Covered By Block Chain <br />
+          Covered By Blockchain <br />
           Technology
         </Heading>
         <Flex mt="10px">

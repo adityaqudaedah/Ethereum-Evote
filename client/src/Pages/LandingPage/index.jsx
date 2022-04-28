@@ -59,7 +59,7 @@ const LandingPage = () => {
   }, [disconnect]);
 
   return (
-    <Flex alignItems="center" flexDirection="column">
+    <Flex width="100%" alignItems="center" flexDirection="column">
       <Tabs variant="soft-rounded" colorScheme="green">
         <TabList py="1.5rem">
           {!account && (
