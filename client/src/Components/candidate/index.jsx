@@ -25,14 +25,16 @@ const Candidate = ({ id, vote: voteCandidate, candidate: data }) => {
         src="https://bit.ly/dan-abramov"
         alt="Dan Abramov"
       />
-      <Text fontSize="2xl" mt="1rem">
+      <Text textTransform="capitalize" fontSize="2xl" mt="1rem">
         {data[0]}
       </Text>
       <Text textAlign="center" as="i" color="gray.500">
         Software Engineer
       </Text>
       <Button
-        onClick={() => { voteCandidate(id)}}
+        onClick={() => {
+          voteCandidate(id);
+        }}
         textTransform="uppercase"
         colorScheme="whatsapp"
         size="lg"

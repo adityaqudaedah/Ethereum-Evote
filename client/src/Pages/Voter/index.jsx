@@ -3,7 +3,8 @@ import { EvoteContext } from "../../context/evote";
 import { useParams } from "react-router-dom";
 import { Flex, Heading, Spinner, Text } from "@chakra-ui/react";
 import Candidate from "../../Components/candidate";
-import { Voted,Unvoted } from "./components";
+import { Voted, Unvoted } from "./components";
+import _ from "lodash";
 const Voter = () => {
   const { account } = useParams();
   const { voteCandidate, getCandidate, getVoters, voters, voted } =
@@ -32,12 +33,12 @@ const Voter = () => {
   }, [voted]);
 
   useEffect(() => {
-    if (account!==null) {
+    if (account !== null) {
       getVoters(account);
     }
   }, [account]);
 
-  if(voters===null) return <Heading>Loading...</Heading>
+  if (voters === null) return <Heading>Loading...</Heading>;
 
   return (
     <Flex
@@ -45,25 +46,30 @@ const Voter = () => {
       alignItems="center"
       justifyContent="space-around"
     >
-    
       {voters[1] === false && voters[0]?.toNumber() === 1 && (
         <>
-          {" "}
-          <Text>Hello Voter</Text>
-          <Text>Wallet Address : {account}</Text>
-          <Flex width="50%" justifyContent="space-between">
+          {/* <Text fontSize="xl">Hello Voter</Text> */}
+          <Text textAlign="center" fontSize="xl">
+            <b>Wallet Address :</b>
+          </Text>
+          <Text
+            px="8px"
+            borderRadius="xl"
+            backgroundColor="green.300"
+            color="blackAlpha.700"
+            fontSize="lg"
+          >
+            {_.truncate(account, { length: 24 })}
+          </Text>
+          <Flex mt="1rem" width="45rem" justifyContent="space-between">
             <Candidate id={0} vote={voteCandidate} candidate={data} />
             <Candidate id={1} vote={voteCandidate} candidate={data1} />
           </Flex>
         </>
       )}
 
-      {voters[0]?.toNumber() === 0 && (
-        <Unvoted/>
-      )}
-      {voters[1] === true && (
-        <Voted />
-      )}
+      {voters[0]?.toNumber() === 0 && <Unvoted />}
+      {voters[1] === true && <Voted />}
     </Flex>
   );
 };

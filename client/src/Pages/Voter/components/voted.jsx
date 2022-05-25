@@ -7,8 +7,8 @@ export const Voted = () => {
         <Image src="../../../../assets/thankyou.svg" />
       </Box>
 
-      <Heading size="lg" color="blackAlpha.500">
-        Terimakasih telah memilih
+      <Heading mt="3rem" size="xl" color="blackAlpha.500">
+        Terimakasih telah memilih 🖤
       </Heading>
     </Flex>
   );
