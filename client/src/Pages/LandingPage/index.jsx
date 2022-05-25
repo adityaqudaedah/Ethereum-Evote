@@ -77,7 +77,7 @@ const LandingPage = () => {
             </Tab>
           )}
 
-          {account && (
+          {account && !isConnectAsAdmin && (
             <Tab ml="1rem">
               <Link to={`/voter/${account}`}>
                 <Text color="pink.500" fontWeight="extrabold">
