@@ -26,7 +26,7 @@ const Result = ({ account }) => {
   }, [voted, account]);
 
   return (
-    <Flex>
+    <Flex >
       {!account && <Heading>Please Connect To See The Result</Heading>}
 
       {account && (

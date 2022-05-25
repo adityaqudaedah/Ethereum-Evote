@@ -50,7 +50,13 @@ const LandingPage = () => {
   }, [disconnect]);
 
   return (
-    <Flex width="100%" alignItems="center" flexDirection="column">
+    <Flex
+      justifyContent="space-between"
+      w="100%"
+
+      alignItems="center"
+      flexDirection="column"
+    >
       <Tabs variant="soft-rounded" colorScheme="green">
         <TabList py="1.5rem">
           {!account && (
