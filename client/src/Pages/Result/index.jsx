@@ -41,7 +41,7 @@ const Result = ({ account }) => {
         </>
       )}
 
-      {!(data&&data1&&account)&&<Heading>Loading...</Heading>}
+      {!(data&&data1)&&<Heading>Loading...</Heading>}
     </Flex>
   );
 };
