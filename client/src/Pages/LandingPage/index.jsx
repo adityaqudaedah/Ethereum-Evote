@@ -52,10 +52,9 @@ const LandingPage = () => {
   return (
     <Flex
       justifyContent="space-between"
-      w="100%"
-
       alignItems="center"
       flexDirection="column"
+      // backgroundColor="gray.100"
     >
       <Tabs variant="soft-rounded" colorScheme="green">
         <TabList py="1.5rem">
