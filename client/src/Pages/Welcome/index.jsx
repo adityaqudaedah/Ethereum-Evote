@@ -19,7 +19,7 @@ const Welcome = () => {
           justifyContent="center"
           // alignItems="center"
         >
-          <Heading fontSize="4xl" fontWeight="extrabold">
+          <Heading maxWidth="500px" fontSize="4xl" fontWeight="extrabold">
             Welcome To E-Voting Covered By Blockchain Technology
           </Heading>
           <Flex mt="10px">
