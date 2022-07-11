@@ -27,7 +27,7 @@ const Result = ({ account }) => {
 
   return (
     <Flex mt="10">
-      {!account && <Heading>Please Connect To See The Result</Heading>}
+      {!account && <Heading>Login Untuk Melihat Hasil</Heading>}
 
       {account && (
         <Flex
@@ -45,7 +45,7 @@ const Result = ({ account }) => {
             <Avatar
               size="2xl"
               name="Christian Nwamba"
-              src="https://bit.ly/code-beast"
+              src="../../../assets/candidates/arifin.jpeg"
             />{" "}
             <Text color="blue.700" textTransform="capitalize" fontSize="3xl">
               <b>{data[0]}</b>
@@ -62,8 +62,8 @@ const Result = ({ account }) => {
           <Flex flexDirection="column" alignItems="center">
             <Avatar
               size="2xl"
-              name="Kent Dodds"
-              src="https://bit.ly/kent-c-dodds"
+              name={data1[0]}
+              src="../../../assets/candidates/doni.jpeg"
             />{" "}
             <Text color="pink.500" textTransform="capitalize" fontSize="3xl">
               <b>{data1[0]}</b>

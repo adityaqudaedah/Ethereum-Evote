@@ -20,18 +20,17 @@ export const EvoteProvider = ({ children }) => {
   const [connectAsAdmin, setConnectAsAdmin] = useState("");
   const [voters, setVoters] = useState(null);
   const [accessToVote, setAccessToVote] = useState(false);
-  const [disconnect, setDisconnect] = useState(false)
+  const [disconnect, setDisconnect] = useState(false);
 
   //check if wallet conected
   const checkIfWalletIsConnected = async () => {
     try {
-      if (!ethereum) return alert("please install metamask");
+      if (!ethereum) return alert("silahkan install metamask");
       const accounts = await ethereum.request({ method: "eth_accounts" });
       const chairperson = await getContract().chairperson();
-      console.info(accounts)
+
       if (accounts.length) {
         if (accounts[0] === chairperson.toLowerCase()) {
-          console.log("x");
           setConnectAsAdmin(accounts[0]);
         } else {
           setConnectedAccount(accounts[0]);
@@ -61,46 +60,6 @@ export const EvoteProvider = ({ children }) => {
     }
   };
 
-  // const connectWalletAsAdmin = async () => {
-  //   try {
-  //     if (!ethereum) return alert("Please Install Meta Mask");
-  //     const admin = await ethereum.request({
-  //       method: "eth_requestAccounts",
-  //     });
-  //     const chairperson = await getContract().chairperson();
-
-  //     if (admin[0] === chairperson) {
-  //       setAdminAccount(admin)
-  //     } else {
-  //       setAdminAccount("")
-  //     }
-
-  //   } catch (error) {
-  //     throw new Error(error);
-  //   }
-  // };
-
-  const getWinnerName = async () => {
-    try {
-      if (!ethereum) alert("please install meta mask");
-      const winner = await getContract().winnerName();
-
-      setWinner(winner);
-    } catch (error) {
-      throw new Error(error);
-    }
-  };
-
-  const voteCandidate = async (indexOfCandidate) => {
-    try {
-      if (!ethereum) alert("please install meta mask");
-      const vote = await getContract().vote(indexOfCandidate);
-      setVoted(vote);
-    } catch (error) {
-      throw new Error(error);
-    }
-  };
-
   const getCandidate = async (indexOfCandidate) => {
     try {
       return await getContract().proposals(indexOfCandidate);
@@ -122,6 +81,16 @@ export const EvoteProvider = ({ children }) => {
     }
   };
 
+  const voteCandidate = async (indexOfCandidate) => {
+    try {
+      if (!ethereum) alert("please install meta mask");
+      const vote = await getContract().vote(indexOfCandidate);
+      setVoted(vote);
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
+
   const giveAccessToVote = async (address) => {
     try {
       const access = await getContract().giveRightToVote(address);
@@ -131,13 +100,24 @@ export const EvoteProvider = ({ children }) => {
     }
   };
 
+  const getWinnerName = async () => {
+    try {
+      if (!ethereum) alert("please install meta mask");
+      const winner = await getContract().winnerName();
+
+      setWinner(winner);
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
+
   useEffect(() => {
     checkIfWalletIsConnected();
-    ethereum.on("accountsChanged", accounts => {
+    ethereum.on("accountsChanged", (accounts) => {
       if (accounts.length === 0) {
-        setDisconnect(true)
+        setDisconnect(true);
       }
-    })
+    });
   }, []);
 
   return (
@@ -158,7 +138,7 @@ export const EvoteProvider = ({ children }) => {
         giveAccessToVote,
         accessToVote,
         setAccessToVote,
-        disconnect
+        disconnect,
       }}
     >
       {children}

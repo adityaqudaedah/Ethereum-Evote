@@ -5,19 +5,28 @@ import { Flex, Heading, Spinner, Text } from "@chakra-ui/react";
 import Candidate from "../../Components/candidate";
 import { Voted, Unvoted } from "./components";
 import _ from "lodash";
+import PATH from "../../utils/path.json"
 const Voter = () => {
   const { account } = useParams();
   const { voteCandidate, getCandidate, getVoters, voters, voted } =
     useContext(EvoteContext);
   const [data, setData] = useState([]);
   const [data1, setData1] = useState([]);
+  const [loading, setLoading] = useState(false);
+ 
   // const [dataVoters, setDataVoters] = useState(null);
 
   useEffect(() => {
     if (voted) {
+      setLoading(true);
       setTimeout(() => {
-        location.reload();
-      }, 5000);
+        setLoading(false);
+
+        setLoading(true);
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
+      }, 50000);
     }
     getCandidate(1).then((item) =>
       item.forEach((element) => {
@@ -38,7 +47,8 @@ const Voter = () => {
     }
   }, [account]);
 
-  if (voters === null) return <Heading>Loading...</Heading>;
+  if (voters === null)
+    return <Heading color="gray">Mengambil data kandidat...</Heading>;
 
   return (
     <Flex
@@ -61,10 +71,23 @@ const Voter = () => {
           >
             {_.truncate(account, { length: 24 })}
           </Text>
-          <Flex mt="1rem" width="45rem" justifyContent="space-between">
-            <Candidate id={0} vote={voteCandidate} candidate={data} />
-            <Candidate id={1} vote={voteCandidate} candidate={data1} />
-          </Flex>
+          {loading && (
+            <Spinner
+              mt="15rem"
+              thickness="4px"
+              speed="0.65s"
+              emptyColor="gray.200"
+              color="blue.500"
+              size="xl"
+            />
+          )}
+
+          {!loading && (
+            <Flex mt="1rem" width="45rem" justifyContent="space-between">
+              <Candidate id={0} vote={voteCandidate} candidate={data} imageFile={PATH.arifin} />
+              <Candidate id={1} vote={voteCandidate} candidate={data1} imageFile={PATH.doni} />
+            </Flex>
+          )}
         </>
       )}
 

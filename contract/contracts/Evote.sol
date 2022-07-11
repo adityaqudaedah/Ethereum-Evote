@@ -67,9 +67,7 @@ contract Evote {
     }
 
 
-    function winningProposal() public view
-            returns (uint256 winningProposal_)
-    {
+    function winningProposal() public view returns (uint256 winningProposal_) {
         uint winningVoteCount = 0;
         for (uint p = 0; p < proposals.length; p++) {
             if (proposals[p].voteCount > winningVoteCount) {
@@ -79,9 +77,7 @@ contract Evote {
         }
     }
 
-    function winnerName() public view
-            returns (string memory winnerName_)
-    {
+    function winnerName() public view returns (string memory winnerName_){
         winnerName_ = proposals[winningProposal()].name;
     }
 }
