@@ -1,14 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import {
-  Flex,
-  ListItem,
-  UnorderedList,
-  Text,
-  Heading,
-  Tabs,
-  TabList,
-  Tab,
-} from "@chakra-ui/react";
+import { Flex, Text, TabList, Tab, Tabs } from "@chakra-ui/react";
 import { EvoteContext } from "../../context/evote";
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
 // import { Box } from "@chakra-ui/react";
@@ -59,7 +50,12 @@ const LandingPage = () => {
   }, [disconnect]);
 
   return (
-    <Flex width="100%" alignItems="center" flexDirection="column">
+    <Flex
+      justifyContent="space-between"
+      alignItems="center"
+      flexDirection="column"
+      // backgroundColor="gray.100"
+    >
       <Tabs variant="soft-rounded" colorScheme="green">
         <TabList py="1.5rem">
           {!account && (
@@ -71,6 +67,26 @@ const LandingPage = () => {
               /> */}
                 <Text color="blue.800" fontWeight="extrabold">
                   E-Vote
+                </Text>
+              </Link>
+            </Tab>
+          )}
+
+          {isConnectAsAdmin && (
+            <Tab ml="1rem">
+              <Link to={`/admin/dashboard/${account}`}>
+                <Text color="pink.500" fontWeight="extrabold">
+                  Admin
+                </Text>
+              </Link>
+            </Tab>
+          )}
+
+          {account && !isConnectAsAdmin && (
+            <Tab ml="1rem">
+              <Link to={`/voter/${account}`}>
+                <Text color="pink.500" fontWeight="extrabold">
+                  Voting
                 </Text>
               </Link>
             </Tab>

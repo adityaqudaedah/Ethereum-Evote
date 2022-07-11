@@ -1,7 +1,15 @@
-import React from 'react'
-import { Heading } from '@chakra-ui/react'
+import React from "react";
+import { Heading, Flex, Image, Box } from "@chakra-ui/react";
 export const Voted = () => {
   return (
-    <Heading size="lg" color="blackAlpha.500"> Terimakasih Telah Menggunakan Hak Pilih Anda</Heading>
-  )
-}
+    <Flex mt="2rem" flexDirection="column" alignItems="center">
+      <Box boxSize="sm">
+        <Image src="../../../../assets/thankyou.svg" />
+      </Box>
+
+      <Heading size="xl" color="blackAlpha.500">
+        Terimakasih telah memilih 🖤
+      </Heading>
+    </Flex>
+  );
+};

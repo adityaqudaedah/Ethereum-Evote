@@ -15,7 +15,7 @@ async function main() {
 
   // We get the contract to deploy
   const EvoteFactory = await hre.ethers.getContractFactory("Evote");
-  const evote = await EvoteFactory.deploy(["mamat","aditya"]);
+  const evote = await EvoteFactory.deploy(["arifin","doni"]);
 
   await evote.deployed();
 

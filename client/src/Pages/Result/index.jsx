@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { EvoteContext } from "../../context/evote";
-import { Flex, Heading } from "@chakra-ui/react";
+import { Flex, Heading, Text, Avatar } from "@chakra-ui/react";
 const Result = ({ account }) => {
   const [data, setData] = useState([]);
   const [data1, setData1] = useState([]);
@@ -26,22 +26,56 @@ const Result = ({ account }) => {
   }, [voted, account]);
 
   return (
-    <Flex>
-      {!account && <Heading>Please Connect To See The Result</Heading>}
+    <Flex mt="10">
+      {!account && <Heading>Login Untuk Melihat Hasil</Heading>}
 
       {account && (
-        <>
-          <div>
-            {data[0]}:{data[1]?.toNumber()}
-          </div>
+        <Flex
+          p="2rem"
+          backgroundColor="gray.100"
+          borderRadius="xl"
+          w="40rem"
+          justifyContent="space-around"
+        >
+          <Flex
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="space-around"
+          >
+            <Avatar
+              size="2xl"
+              name="Christian Nwamba"
+              src="../../../assets/candidates/arifin.jpeg"
+            />{" "}
+            <Text color="blue.700" textTransform="capitalize" fontSize="3xl">
+              <b>{data[0]}</b>
+            </Text>
+            <Text fontSize="3xl">
+              <b>{data[1]?.toNumber()}</b>
+            </Text>
+          </Flex>
 
-          <div>
-            {data1[0]}:{data1[1]?.toNumber()}
-          </div>
-        </>
+          <Text textAlign="center" fontSize="6xl">
+            <b>VS</b>
+          </Text>
+
+          <Flex flexDirection="column" alignItems="center">
+            <Avatar
+              size="2xl"
+              name={data1[0]}
+              src="../../../assets/candidates/doni.jpeg"
+            />{" "}
+            <Text color="pink.500" textTransform="capitalize" fontSize="3xl">
+              <b>{data1[0]}</b>
+            </Text>
+            <Text fontSize="3xl">
+              <b>{data1[1]?.toNumber()}</b>
+            </Text>
+          </Flex>
+        </Flex>
       )}
 
-      {!(data&&data1&&account)&&<Heading>Loading...</Heading>}
+      {!(data && data1) && <Heading>Loading...</Heading>}
     </Flex>
   );
 };
