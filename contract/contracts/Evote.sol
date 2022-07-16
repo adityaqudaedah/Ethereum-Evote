@@ -42,21 +42,34 @@ contract Evote {
     function giveRightToVote(address voter) public {
         require(
             msg.sender == chairperson,
-            "Only chairperson can give right to vote."
+            "Hanya admin yang dapat memberikan hak akses untuk voting"
         );
         require(
             !voters[voter].voted,
-            "The voter already voted."
+            "Voter telah melakukan voting"
         );
         require(voters[voter].weight == 0);
         voters[voter].weight = 1;
     }
 
 
-    function vote(uint proposal) public {
-        Voter storage sender = voters[msg.sender];
-        require(sender.weight != 0, "Has no right to vote");
-        require(!sender.voted, "Already voted.");
+    // function vote(uint proposal) public {
+    //     Voter storage sender = voters[msg.sender];
+    //     require(sender.weight != 0, "Has no right to vote");
+    //     require(!sender.voted, "Already voted.");
+    //     sender.voted = true;
+    //     sender.vote = proposal;
+
+    //     // If 'proposal' is out of the range of the array,
+    //     // this will throw automatically and revert all
+    //     // changes.
+    //     proposals[proposal].voteCount += sender.weight;
+    // }
+
+     function vote(address from,uint proposal) public {
+        Voter storage sender = voters[from];
+        require(sender.weight != 0, "Voter tidak memiliki hak akses untuk melakukan vote");
+        require(!sender.voted, "Voter sudah melakukan voting");
         sender.voted = true;
         sender.vote = proposal;
 

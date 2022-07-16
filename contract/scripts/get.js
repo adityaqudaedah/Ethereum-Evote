@@ -24,15 +24,16 @@ async function main() {
 
   //  const grantAccess = await evote.giveRightToVote("0xdD2FD4581271e230360230F9337D5c0430Bf44C0")
   // const winner = await evote.winnerName()
-  // const voters = await evote.voters("0x70997970c51812dc3a010c7d01b50e0d17dc79c8")
+  const voters = await evote.voters(admin)
 
   // const vote = await evote.vote(0)
 
-  console.log("Admin : ", admin);
+  // console.log("kandidat", candidate['voteCount']);
   // console.log('Candidate : ',candidate)
   // console.log('Pemenang : ', winner)
-  // console.log(voters)
+  console.log('voter',voters)
   // console.log(vote)
+  console.log('admin',admin);
 
   // console.log(grantAccess);
 }

@@ -15,14 +15,23 @@ async function main() {
 
   // We get the contract to deploy
   const EvoteFactory = await hre.ethers.getContractFactory("Evote");
-  const evote = await EvoteFactory.attach("0x5FbDB2315678afecb367f032d93F642f64180aa3");
+  const evote = await EvoteFactory.attach(
+    "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"
+  );
 
-  const giveVote = await evote.giveRightToVote("0xbDA5747bFD65F08deb54cb465eB87D40e51B197E")
+  const from = "0x8626f6940e2eb28930efb4cef49b2d1f2c9c1199";
 
-  await evote.vote(0)
+  // await evote.giveRightToVote(from)
 
-  console.log(giveVote);
+  try {
+    await evote.vote(from, 0);
+    
+  } catch (error) {
+    console.log(error)
+  }
 
+  // console.log(await evote.voters(from))
+  // console.log(await evote.proposals(1))
 }
 
 // We recommend this pattern to be able to use async/await everywhere
