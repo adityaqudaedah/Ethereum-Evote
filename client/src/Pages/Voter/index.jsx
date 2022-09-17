@@ -26,7 +26,7 @@ const Voter = () => {
         setTimeout(() => {
           location.reload();
         }, 1000);
-      }, 50000);
+      }, 15000);
     }
     getCandidate(1).then((item) =>
       item.forEach((element) => {

@@ -42,7 +42,7 @@ const Dashboard = () => {
       <Avatar
         mt="1rem"
         name="admin"
-        src="https://cdn-icons-png.flaticon.com/512/924/924874.png"
+        src="https://cdn-icons-png.flaticon.com/512/5185/5185871.png"
         size="2xl"
       />
       <Input
@@ -66,7 +66,7 @@ const Dashboard = () => {
         colorScheme="pink"
         onClick={() => onClickGiveAccessHanlder(address)}
       >
-        Give Voter Access
+        Berikan Hak Akses
       </Button>
     </Flex>
   );

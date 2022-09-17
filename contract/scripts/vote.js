@@ -22,13 +22,14 @@ async function main() {
   const from = "0x8626f6940e2eb28930efb4cef49b2d1f2c9c1199";
 
   // await evote.giveRightToVote(from)
+  await evote.vote(from, 0);
 
-  try {
-    await evote.vote(from, 0);
+  // try {
+  //   await evote.vote(from, 0);
     
-  } catch (error) {
-    console.log(error)
-  }
+  // } catch (error) {
+  //   console.log(error)
+  // }
 
   // console.log(await evote.voters(from))
   // console.log(await evote.proposals(1))
