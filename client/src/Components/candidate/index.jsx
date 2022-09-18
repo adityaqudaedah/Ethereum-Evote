@@ -22,7 +22,7 @@ const Candidate = ({ id, vote: voteCandidate, candidate: data, imageFile }) => {
       <Avatar
         size="2xl"
         name={data[0]}
-        src="../../../assets/candidates/arifin.jpeg"
+        src={imageFile}
         
       />
       <Text textTransform="capitalize" fontSize="2xl" mt="1rem">

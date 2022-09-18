@@ -53,22 +53,9 @@ contract Evote {
     }
 
 
-    // function vote(uint proposal) public {
-    //     Voter storage sender = voters[msg.sender];
-    //     require(sender.weight != 0, "Has no right to vote");
-    //     require(!sender.voted, "Already voted.");
-    //     sender.voted = true;
-    //     sender.vote = proposal;
-
-    //     // If 'proposal' is out of the range of the array,
-    //     // this will throw automatically and revert all
-    //     // changes.
-    //     proposals[proposal].voteCount += sender.weight;
-    // }
-
-     function vote(address from,uint proposal) public {
-        Voter storage sender = voters[from];
-        require(sender.weight != 0, "Voter tidak memiliki hak akses untuk melakukan vote");
+   function vote(uint proposal) public {
+        Voter storage sender = voters[msg.sender];
+        require(sender.weight != 0, "Voter tidak memiliki hak akses untuk melakukan voting");
         require(!sender.voted, "Voter sudah melakukan voting");
         sender.voted = true;
         sender.vote = proposal;
@@ -78,6 +65,19 @@ contract Evote {
         // changes.
         proposals[proposal].voteCount += sender.weight;
     }
+
+    // function vote(address from,uint proposal) public {
+    //     Voter storage sender = voters[from];
+    //     require(sender.weight != 0, "Voter tidak memiliki hak akses untuk melakukan voting");
+    //     require(!sender.voted, "Voter sudah melakukan voting");
+    //     sender.voted = true;
+    //     sender.vote = proposal;
+
+    //     // If 'proposal' is out of the range of the array,
+    //     // this will throw automatically and revert all
+    //     // changes.
+    //     proposals[proposal].voteCount += sender.weight;
+    // }
 
 
     function winningProposal() public view returns (uint256 winningProposal_) {

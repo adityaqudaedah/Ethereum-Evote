@@ -44,7 +44,7 @@ const Result = ({ account }) => {
           >
             <Avatar
               size="2xl"
-              name="Christian Nwamba"
+              name={data[0]}
               src="../../../assets/candidates/arifin.jpeg"
             />{" "}
             <Text color="blue.700" textTransform="capitalize" fontSize="3xl">
